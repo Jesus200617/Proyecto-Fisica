@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador Átomo de Bohr</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <style>
+        
+    </style>
+</head>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    
+    <div id="main">
+        <div id="titulo">
+            <nav class="navbar navbar-expand-lg ">
+            <div class="container-fluid">
+                <h1 class="" href="#">Simulador del Modelo Atomico de Bohr</h1>
+                <span class="navbar-text">
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    Como funciona?
+                    </button>
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Instrucciones</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <p>En la parte del modelo atomico puedes seleccionar una orbita, según la orbita que selecciones se te proporcionaran los siguientes datos del electron: Radio, Velocidad, Frecuencia, Fuerza y Energía cinética</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                        </div>
+                        </div>
+                    </div>
+                    </div>
+                </span>
+                </div>
+            </div>
+            </nav>
+        </div>
+        
+        <div id="contenido">
+            <div id="panel">
+                    <h2>Panel de Datos (Órbita <span id="numOrbita">-</span>)</h2>
+                    <div style="width: 250px;"> 
+                        <button class="btn btn-outline-info w-100" type="button" data-bs-toggle="collapse" data-bs-target="#infoRadio" aria-expanded="false">
+                            <strong>Radio:</strong> <br> <span id="valRadio">0</span> m
+                        </button>
+                        <div class="collapse mt-2" id="infoRadio">
+                            <div class="card card-body bg-dark text-light border-info text-start" style="font-size: 0.9em;">
+                                Es la distancia desde el centro del núcleo hasta la órbita donde se encuentra girando el electrón.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="width: 250px;">
+                        <button class="btn btn-outline-info w-100" type="button" data-bs-toggle="collapse" data-bs-target="#infoVelocidad" aria-expanded="false">
+                            <strong>Velocidad:</strong> <br> <span id="valVelocidad">0</span> m/s
+                        </button>
+                        <div class="collapse mt-2" id="infoVelocidad">
+                            <div class="card card-body bg-dark text-light border-info text-start" style="font-size: 0.9em;">
+                                Es la rapidez tangencial a la que se mueve el electrón a lo largo de su órbita circular.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="width: 250px;">
+                        <button class="btn btn-outline-info w-100" type="button" data-bs-toggle="collapse" data-bs-target="#infoFrecuencia" aria-expanded="false">
+                            <strong>Frecuencia:</strong> <br> <span id="valFrecuencia">0</span> Hz    
+                        </button>
+                        <div class="collapse mt-2" id="infoFrecuencia">
+                            <div class="card card-body bg-dark text-light border-info text-start" style="font-size: 0.9em;">
+                                Representa la rapidez con la que vibra o completa ciclos (órbitas) de energía, medida en hercios. 
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="width: 250px;">
+                        <button class="btn btn-outline-info w-100" type="button" data-bs-toggle="collapse" data-bs-target="#infoFuerza" aria-expanded="false">
+                            <strong>Fuerza:</strong> <br> <span id="valFuerza">0</span> N
+                        </button>
+                        <div class="collapse mt-2" id="infoFuerza">
+                            <div class="card card-body bg-dark text-light border-info text-start" style="font-size: 0.9em;">
+                                Mantiene a los electrones con carga negativa orbitando cerca de los protones con carga positiva en el núcleo.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="width: 250px;">
+                        <button class="btn btn-outline-info w-100" type="button" data-bs-toggle="collapse" data-bs-target="#infoEnergia" aria-expanded="false">
+                            <strong>Energía Cinética:</strong> <br> <span id="valEnergia">0</span> J
+                        </button>
+                        <div class="collapse mt-2" id="infoEnergia">
+                            <div class="card card-body bg-dark text-light border-info text-start" style="font-size: 0.9em;">
+                                Es la energía asociada a su movimiento constante alrededor del núcleo, determinada por su masa y su alta velocidad orbital.
+                            </div>
+                        </div>
+                    </div>
+            </div>
+            <div id="visor">
+                <canvas id="lienzoAtomo" width="750" height="750"></canvas>
+            </div>
+        </div>
+    </div>
+    
+    <script src="calculos.js"></script>
+    <script src="canvas.js"></script>
+
+</body>
+</html>
