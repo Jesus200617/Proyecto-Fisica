@@ -2,8 +2,8 @@ const canvas = document.getElementById('lienzoAtomo');
 const ctx = canvas.getContext('2d');
 let anguloActual = 0;
 // --- FUNCIONES DE DIBUJO ---
-const centroX = canvas.width / 2;
-const centroY = canvas.height / 2;
+let centroX = canvas.width / 2;
+let centroY = canvas.height / 2;
 function dibujarNucleo() {
     ctx.beginPath()
     ctx.arc(centroX, centroY, 20, 0, 2 * Math.PI); 
@@ -33,7 +33,7 @@ function dibujarElectron(radioVisual, angulo){
     let Y = centroY + radioVisual * Math.sin(angulo); 
     ctx.beginPath()
     ctx.arc(X, Y, 13, 0, 2 * Math.PI); 
-    ctx.fillStyle = '#58a6ff'; 
+    ctx.fillStyle = '#58a6ff '; 
     ctx.fill();
     ctx.lineWidth = 2;
     ctx.strokeStyle = '#000000';
@@ -57,12 +57,10 @@ canvas.addEventListener('click', function(evento) {
     let rect = canvas.getBoundingClientRect();
     let clickX = evento.clientX - rect.left;
     let clickY = evento.clientY - rect.top;
-
     let diferenciaX = clickX - centroX;
     let diferenciaY = clickY - centroY;
-
     let distancia = (Math.sqrt(Math.pow(diferenciaX, 2) + Math.pow(diferenciaY, 2)))
-    let n = Math.round(distancia/50); 
+    let n = Math.round(distancia/50);
     if(n>=1 && n<=7){
         let radioFisico = calcularRadio(n);
         let velocidadFisica = calcularVelocidad(radioFisico, n);
@@ -88,12 +86,14 @@ canvas.addEventListener('mousemove', function(evento) {
     let diferenciaY = mouseY - centroY;
     let distancia = Math.sqrt(Math.pow(diferenciaX, 2) + Math.pow(diferenciaY, 2));
     let n = Math.round(distancia / 50);
-    let radioExacto = n * 50;
-    if (n >= 1 && n <= 7 && Math.abs(distancia - radioExacto) <= 10) {
+    if (n >= 1 && n <= 7) {
         orbitaHover = n;
         canvas.style.cursor = 'pointer';
     } else {
         orbitaHover = 0;
-        canvas.style.cursor = 'default';            }
-});
+        canvas.style.cursor = 'default';            
+    }
+    centroX = canvas.width / 2;
+    centroY = canvas.height / 2;
+    });
 animar();

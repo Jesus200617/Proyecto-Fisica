@@ -8,7 +8,6 @@ body {
 #main{
     display: flex;
     flex-direction: column;
-    position: ;
     top: 0;
     z-index: 100;   
 }
@@ -62,4 +61,3 @@ canvas {
     border-radius: 50%;
     box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
 }
-

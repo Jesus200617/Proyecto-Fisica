@@ -5,9 +5,7 @@ const m = 9.109e-31;
 const h = 6.626e-34;
 const epsilon = 8.854e-12;
 const k = 8.987e9;  
- 
 
-// --- FUNCIONES DEL SIMULADOR ---
 const calcularRadio = (n) => (r1)*(Math.pow(n, 2));
 const calcularVelocidad = (radio, n) => (n * h) / (2 * PI * m * radio);
 const calcularFrecuencia = (velocidad, radio) => velocidad / (2 * PI * radio);
